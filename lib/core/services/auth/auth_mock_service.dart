@@ -1,12 +1,15 @@
 import 'dart:io';
 
 import 'package:chat/core/services/auth/auth_service.dart';
-
 import '../../models/chat_user.dart';
 
 class AuthMockService implements AuthService {
+  static Map<String, ChatUser> _user = {};
+  static ChatUser? _currentUser;
+
+  @override
   ChatUser? get currentUser {
-    return null;
+    return _currentUser;
   }
 
   Stream<ChatUser?> get userChanges {}
