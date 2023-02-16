@@ -1,4 +1,4 @@
-import 'package:chat/models/auth_form_data.dart';
+import 'package:chat/core/models/auth_form_data.dart';
 
 import 'package:flutter/material.dart';
 
@@ -17,6 +17,12 @@ class _AuthPageState extends State<AuthPage> {
   Future<void> _handleSubmit(AuthFormData formData) async {
     try {
       setState(() => _isLoading = true);
+
+      if (formData.isLogin) {
+        //login
+      } else {
+        //Singup
+      }
     } catch (error) {
       //tratar error
     } finally {
