@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "314024431642",
-    "project_id": "chat-br-6243d",
-    "storage_bucket": "chat-br-6243d.appspot.com"
+    "project_number": "192504270643",
+    "project_id": "course-chat-2216e",
+    "storage_bucket": "course-chat-2216e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:314024431642:android:7beb168136088a0e7b81a3",
+        "mobilesdk_app_id": "1:192504270643:android:89f14f89a43000b5e53846",
         "android_client_info": {
-          "package_name": "br.com.chat"
+          "package_name": "br.com.course.chat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "314024431642-lqqk1b1l69uiglb0672clcdiuadjgeco.apps.googleusercontent.com",
+          "client_id": "192504270643-ee54rc5opmr34uohb87os8p5j54q0l8t.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCRhX9V5ICqR1vE1AsKsOXWIXDoy_eKNgc"
+          "current_key": "AIzaSyBXl04-zpRDemeDAymQCmm9V7wdPtFRanE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "314024431642-lqqk1b1l69uiglb0672clcdiuadjgeco.apps.googleusercontent.com",
+              "client_id": "192504270643-ee54rc5opmr34uohb87os8p5j54q0l8t.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
