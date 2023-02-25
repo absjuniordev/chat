@@ -9,14 +9,14 @@ import 'package:firebase_core/firebase_core.dart';
 class AuthOrAppPage extends StatelessWidget {
   const AuthOrAppPage({super.key});
 
-  Future<void> inti(BuildContext context) async {
+  Future<void> init(BuildContext context) async {
     await Firebase.initializeApp();
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: inti(context),
+      future: init(context),
       builder: (ctx, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const LoadingPage();

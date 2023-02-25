@@ -28,7 +28,7 @@ class _AuthFormState extends State<AuthForm> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(msg),
-        backgroundColor: Theme.of(context).errorColor,
+        backgroundColor: Theme.of(context).colorScheme.error,
       ),
     );
   }
@@ -61,6 +61,7 @@ class _AuthFormState extends State<AuthForm> {
                   initialValue: _formData.name,
                   onChanged: (name) => _formData.name = name,
                   decoration: const InputDecoration(labelText: 'Nome'),
+                  // ignore: no_leading_underscores_for_local_identifiers
                   validator: (_name) {
                     final name = _name ?? '';
                     if (name.trim().length < 5) {
@@ -74,6 +75,7 @@ class _AuthFormState extends State<AuthForm> {
                 initialValue: _formData.email,
                 onChanged: (email) => _formData.email = email,
                 decoration: const InputDecoration(labelText: 'E-mail'),
+                // ignore: no_leading_underscores_for_local_identifiers
                 validator: (_email) {
                   final emial = _email ?? '';
                   if (!emial.contains('@')) {
@@ -89,6 +91,7 @@ class _AuthFormState extends State<AuthForm> {
                 onChanged: (password) => _formData.password = password,
                 obscureText: true,
                 decoration: const InputDecoration(labelText: 'Senha'),
+                // ignore: no_leading_underscores_for_local_identifiers
                 validator: (_password) {
                   final password = _password ?? '';
                   if (password.length < 6) {
