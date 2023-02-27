@@ -13,7 +13,8 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cod3r Chat'),
+        centerTitle: true,
+        title: const Text('Chat cool'),
         actions: [
           DropdownButtonHideUnderline(
             child: DropdownButton(
