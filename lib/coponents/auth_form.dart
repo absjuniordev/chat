@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:chat/coponents/user_image_picker.dart';
 import 'package:chat/core/models/auth_form_data.dart';
 import 'package:flutter/material.dart';
