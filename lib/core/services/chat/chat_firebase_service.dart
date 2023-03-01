@@ -6,7 +6,6 @@ import 'chat_service.dart';
 
 class ChatFireBaseService implements ChatService {
   static MultiStreamController<List<ChatMessage>>? _controller;
-
   @override
   Stream<List<ChatMessage>> messagesStrem() {
     return Stream<List<ChatMessage>>.empty();
@@ -15,29 +14,25 @@ class ChatFireBaseService implements ChatService {
   @override
   Future<ChatMessage?> save(String text, ChatUser user) async {
     final store = FirebaseFirestore.instance;
+    final msg = ChatMessage(
+      id: '',
+      text: text,
+      createdAt: DateTime.now(),
+      userId: user.id,
+      userName: user.name,
+      userImageURL: user.imageURL,
+    );
 
-    //#1 ChatMessage => Map<String, dynamic>
-    final docRef = await store.collection('chat').add({
-      'text': text,
-      'createdAt': DateTime.now().toIso8601String(),
-      'userId': user.id,
-      'userName': user.name,
-      'userImageURL': user.imageURL,
-    });
+    final docRef = await store
+        .collection('chat')
+        .withConverter(
+          fromFirestore: _fromFirestore,
+          toFirestore: _toFirestore,
+        )
+        .add(msg);
 
     final doc = await docRef.get();
-    final data = doc.data()!;
-
-    //#1 Map<String, dynamic> => ChatMessage
-
-    return ChatMessage(
-      id: doc.id,
-      text: data['text'],
-      createdAt: DateTime.parse(data['createdAt']),
-      userId: data['userId'],
-      userName: data['userName'],
-      userImageURL: data['userImageURL'],
-    );
+    return doc.data()!;
   }
 
   //#2 ChatMessage => Map<String, dynamic>
