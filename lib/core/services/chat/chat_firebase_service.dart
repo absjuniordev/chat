@@ -16,8 +16,8 @@ class ChatFireBaseService implements ChatService {
   Future<ChatMessage?> save(String text, ChatUser user) async {
     final store = FirebaseFirestore.instance;
 
-    //ChatMessage => Map
-    store.collection('chat').add({
+    //ChatMessage => Map<String, dynamic>
+    final docRef = await store.collection('chat').add({
       'text': text,
       'createdAt': DateTime.now().toIso8601String(),
       'userId': user.id,
@@ -25,6 +25,18 @@ class ChatFireBaseService implements ChatService {
       'userImageURL': user.imageURL,
     });
 
-    return null;
+    final doc = await docRef.get();
+    final data = doc.data()!;
+
+    //ChatMessage => Map<String, dynamic>
+
+    return ChatMessage(
+      id: doc.id,
+      text: data['text'],
+      createdAt: DateTime.parse(data['createdAt']),
+      userId: data['userId'],
+      userName: data['userName'],
+      userImageURL: data['userImageURL'],
+    );
   }
 }
