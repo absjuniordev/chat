@@ -39,4 +39,19 @@ class ChatFireBaseService implements ChatService {
       userImageURL: data['userImageURL'],
     );
   }
+
+  //Map<String, dynamic> => ChatMessage
+  ChatMessage _fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> doc,
+    SnapshotOptions? options,
+  ) {
+    return ChatMessage(
+      id: doc.id,
+      text: doc['text'],
+      createdAt: DateTime.parse(doc['createdAt']),
+      userId: doc['userId'],
+      userName: doc['userName'],
+      userImageURL: doc['userImageURL'],
+    );
+  }
 }
