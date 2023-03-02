@@ -5,6 +5,7 @@ import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class AuthFirebaseService implements AuthService {
   static ChatUser? _currentUser;
@@ -46,7 +47,8 @@ class AuthFirebaseService implements AuthService {
     await credential.user?.updatePhotoURL(imageURL);
 
     // 3. salvar usuário no banco de dados (opcional)
-    await _saveChatUser(_toChatUser(credential.user!, imageURL));
+    _currentUser = _toChatUser(credential.user!, name, imageURL);
+    await _saveChatUser(_currentUser!);
   }
 
   @override
@@ -82,10 +84,10 @@ class AuthFirebaseService implements AuthService {
     });
   }
 
-  static ChatUser _toChatUser(User user, [String? imageURL]) {
+  static ChatUser _toChatUser(User user, [String? name, String? imageURL]) {
     return ChatUser(
       id: user.uid,
-      name: user.displayName ?? user.email!.split('@')[0],
+      name: name ?? user.displayName ?? user.email!.split('@')[0],
       email: user.email!,
       imageURL: imageURL ?? user.photoURL ?? 'assets/images/avatar.png',
     );
