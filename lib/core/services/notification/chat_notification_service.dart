@@ -25,9 +25,9 @@ class ChatNotificationService with ChangeNotifier {
   // Push Notification
 
   Future<void> init() async {
+    await _configureTerminated();
     await _configureForeground();
     await _configureBackground();
-    await _configureTerminated();
   }
 
   Future<bool> get _siAuthorized async {
